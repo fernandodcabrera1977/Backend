@@ -1,10 +1,11 @@
-package com.intercorp.challenge.model;
+package com.intercorp.challenge.model.http;
 
 import java.time.LocalDate;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -23,8 +24,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel(value = "ClientDTO", description = "Client request")
+@ApiModel(value = "ClientDTO", description = "Client dto")
 public class ClientDTO {
+	
+	@ApiModelProperty(value = "dni", required = true)
+	@Min(value = 1)
+	private int dni;
 	
 	@ApiModelProperty(value = "nombre", required = true)
 	@NotBlank
@@ -35,15 +40,15 @@ public class ClientDTO {
 	private String lastName;
 	
 	@ApiModelProperty(value = "edad", required = true)
-	@NotEmpty
 	@Min(value = 16)
 	private int age;
 	
 	@ApiModelProperty(value = "fecha de nacimiento", required = true, example = "24/12/1984")
-	@NotBlank
+	@NotNull
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	@JsonDeserialize(using = LocalDateDeserializer.class)
 	@JsonSerialize(using = LocalDateSerializer.class)
 	private LocalDate birthDate;
+
 
 }

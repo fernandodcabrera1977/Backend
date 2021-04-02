@@ -1,4 +1,4 @@
-package com.intercorp.challenge.model;
+package com.intercorp.challenge.model.entities;
 
 import java.time.LocalDate;
 
@@ -17,7 +17,7 @@ import lombok.Setter;
 public class Client {
 	
 	@Id
-	private int id;
+	private int dni;
 	private String name;
 	private String lastName;
 	private int age;
