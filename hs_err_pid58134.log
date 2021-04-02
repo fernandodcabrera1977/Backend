@@ -1,0 +1,89 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f6dbe05c0ad, pid=58134, tid=58145
+#
+# JRE version: OpenJDK Runtime Environment (11.0.10+9) (build 11.0.10+9-Ubuntu-0ubuntu1.20.04)
+# Java VM: OpenJDK 64-Bit Server VM (11.0.10+9-Ubuntu-0ubuntu1.20.04, mixed mode, sharing, tiered, compressed oops, serial gc, linux-amd64)
+# Problematic frame:
+# C  [libjimage.so+0x30ad]
+#
+# Core dump will be written. Default location: Core dumps may be processed with "/usr/share/apport/apport %p %s %c %d %P %E" (or dumping to /home/mateo/Documentos/Repo/challenge/core.58134)
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugs.launchpad.net/ubuntu/+source/openjdk-lts
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:37283 -javaagent:/home/mateo/.eclipse/org.eclipse.platform_4.16.0_640022211_linux_gtk_x86_64/configuration/org.eclipse.osgi/215/0/.cp/lib/javaagent-shaded.jar -Dfile.encoding=UTF-8 com.intercorp.challenge.ChallengeApplication
+
+Host: Intel(R) Core(TM) i7-4720HQ CPU @ 2.60GHz, 1 cores, 7G, Ubuntu 20.04.2 LTS
+Time: Fri Apr  2 11:33:39 2021 -03 elapsed time: 195.483658 seconds (0d 0h 3m 15s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f6db80c2800):  JavaThread "Signal Dispatcher" daemon [_thread_in_vm, id=58145, stack(0x00007f6d9eb94000,0x00007f6d9ec95000)]
+
+Stack: [0x00007f6d9eb94000,0x00007f6d9ec95000],  sp=0x00007f6d9ec921f0,  free space=1016k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [libjimage.so+0x30ad]
+C  [libjimage.so+0x3da2]
+C  [libjimage.so+0x42b1]  JIMAGE_FindResource+0xf1
+V  [libjvm.so+0x5af401]
+V  [libjvm.so+0x5b1bb1]
+V  [libjvm.so+0xde46ed]
+V  [libjvm.so+0xde327a]
+V  [libjvm.so+0xde583b]
+V  [libjvm.so+0x66111e]
+V  [libjvm.so+0x84ee46]
+j  jdk.internal.misc.Signal.dispatch(I)V+25 java.base@11.0.10
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x857b39]
+V  [libjvm.so+0x856b52]
+V  [libjvm.so+0xbc368e]
+V  [libjvm.so+0xe1b50f]
+V  [libjvm.so+0xe17b40]
+V  [libjvm.so+0xbd5436]
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  jdk.internal.misc.Signal.dispatch(I)V+25 java.base@11.0.10
+v  ~StubRoutines::call_stub
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 1 (SEGV_MAPERR), si_addr: 0x00007f6daf8b1768
+
+Register to memory mapping:
+
+RAX=0x00000000000081d3 is an unknown value
+RBX=0x00007f6d9ec922a1 is pointing into the stack for thread: 0x00007f6db80c2800
+RCX=0x00007f6d9ec922c3 is pointing into the stack for thread: 0x00007f6db80c2800
+RDX=0x00000000000081d3 is an unknown value
+RSP=0x00007f6d9ec921f0 is pointing into the stack for thread: 0x00007f6db80c2800
+RBP=0x00007f6d9ec92210 is pointing into the stack for thread: 0x00007f6db80c2800
+RSI=0x0 is NULL
+RDI=0x00007f6dbe061030: <offset 0x0000000000008030> in /usr/lib/jvm/java-11-openjdk-amd64/lib/libjimage.so at 0x00007f6dbe059000
+R8 =0x00007f6daf89101c is an unknown value
+R9 =0x00007f6d9ec930b0 is pointing into the stack for thread: 0x00007f6db80c2800
+R10=0x00007f6dbdab4400: <offset 0x0000000000f40400> in /usr/lib/jvm/java-11-openjdk-amd64/lib/server/libjvm.so at 0x00007f6dbcb74000
+R11=0x00007f6d9ec93418 is pointing into the stack for thread: 0x00007f6db80c2800
+R12=0x0000000000008424 is an unknown value
+R13=0x00007f6d9ec922a0 is pointing into the stack for thread: 0x00007f6db80c2800
+R14=0x0 is NULL
+R15=0x00007f6db80c3420 points into unknown readable memory: 0x65746e692f6b646a | 6a 64 6b 2f 69 6e 74 65
+
+
+Registers:
+RAX=0x00000000000081d3, RBX=0x00007f6d9ec922a1, RCX=0x00007f6d9ec922c3, RDX=0x00000000000081d3
+RSP=0x00007f6d9ec921f0, RBP=0x00007f6d9ec92210, RSI=0x0000000000000000, RDI=0x00007f6dbe061030
+R8 =0x00007f6daf89101c, R9 =0x00007f6d9ec930b0, R10=0x00007f6dbdab4400, R11=0x00007f6d9ec93418
+R12=0x0000000000008424, R13=0x00007f6d9ec922a0, R14=0x0000000000000000, R15=0x00007f6db80c3420
+RIP=0x00007f6dbe05c0ad, EFLAGS=0x0000000000010246, CSGSFS=0x002b000000000033, ERR=0x0000000000000004
+  TRAPNO=0x000000000000000e
+
+Top of Stack: (sp=0x00007f6d9ec921f0)
+0x00007f6d9ec921f0:   0000000000000000 00007f6d9ec93338
+0x00007f6d9ec92200:   00007f6db8009b40 00007f6d9ec922a0
+0x00007f6d9ec92210:   00007f6d9ec92280 00007f6dbe05cda2
+0x00007f6d9ec92220:   0000000000000000 0000000000000000 
+
+Instructions: (pc=0x00007f6dbe05c0ad)
