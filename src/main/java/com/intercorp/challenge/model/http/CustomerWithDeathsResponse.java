@@ -11,14 +11,15 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@ApiModel(value = "ClientsWithDeathsResponse", description = "Lista de cliente con fecha probable de muerte")
-public class ClientsWithDeathsResponse extends ClientDTO{
+@ApiModel(value = "CustomerWithDeathsResponse", description = "Lista de cliente con fecha probable de muerte")
+public class CustomerWithDeathsResponse extends CustomerDTO {
 
 	@ApiModelProperty(value = "fecha probable de muerte", required = true, example = "24/12/2030")
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate deathDate;
-	
-	public ClientsWithDeathsResponse(int dni, String name, String lastName, int age, LocalDate birthDate, LocalDate deathDate) {
+
+	public CustomerWithDeathsResponse(int dni, String name, String lastName, int age, LocalDate birthDate,
+			LocalDate deathDate) {
 		super(dni, name, lastName, age, birthDate);
 		this.deathDate = deathDate;
 	}

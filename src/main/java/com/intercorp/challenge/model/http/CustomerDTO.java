@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -24,31 +23,30 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel(value = "ClientDTO", description = "Client dto")
-public class ClientDTO {
-	
+@ApiModel(value = "CustomerDTO", description = "Customer dto")
+public class CustomerDTO {
+
 	@ApiModelProperty(value = "dni", required = true)
 	@Min(value = 1)
 	private int dni;
-	
+
 	@ApiModelProperty(value = "nombre", required = true)
 	@NotBlank
 	private String name;
-	
+
 	@ApiModelProperty(value = "apellido", required = true)
 	@NotBlank
 	private String lastName;
-	
+
 	@ApiModelProperty(value = "edad", required = true)
 	@Min(value = 16)
 	private int age;
-	
+
 	@ApiModelProperty(value = "fecha de nacimiento", required = true, example = "24/12/1984")
 	@NotNull
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	@JsonDeserialize(using = LocalDateDeserializer.class)
 	@JsonSerialize(using = LocalDateSerializer.class)
 	private LocalDate birthDate;
-
 
 }

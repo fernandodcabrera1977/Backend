@@ -28,14 +28,11 @@ public class SwaggerConfig {
 		return new ApiInfoBuilder().title(this.name).contact(CONTACT).version(this.version).build();
 	}
 
-    @Bean
-    public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2).select()
-                .apis(RequestHandlerSelectors.basePackage("com.intercorp.challenge.controller"))
-                .paths(PathSelectors.any()).build().apiInfo(apiInfo());
-    }
-    
-
-
+	@Bean
+	public Docket api() {
+		return new Docket(DocumentationType.SWAGGER_2).select()
+				.apis(RequestHandlerSelectors.basePackage("com.intercorp.challenge.controller"))
+				.paths(PathSelectors.any()).build().apiInfo(apiInfo());
+	}
 
 }
