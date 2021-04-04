@@ -31,11 +31,18 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
 		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), errors);
 		return handleExceptionInternal(ex, apiError, headers, apiError.getStatus(), request);
 	}
-	
+
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<?> globlalExceptionHandler(Exception ex) {
-		final ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getLocalizedMessage());
+		ApiError apiError;
+		if (ex instanceof DataExistException) {
+			DataExistException e = (DataExistException) ex;
+			apiError = new ApiError(HttpStatus.BAD_REQUEST, e.getErrorMessage());
+			return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
+		}
+		apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getLocalizedMessage());
 		return new ResponseEntity<>(apiError, HttpStatus.INTERNAL_SERVER_ERROR);
+
 	}
 
 }
