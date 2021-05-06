@@ -8,8 +8,8 @@ spec:
     app: java
   ports:
   - name: test1
-    port: 8889
-    targetPort: 8889
+    port: 8080
+    targetPort: 8080
 ---
 apiVersion: apps/v1
 kind: Deployment
