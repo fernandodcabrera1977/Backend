@@ -15,7 +15,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: java
-  namespace: default
+  namespace: java
 spec:
   replicas: 1
   selector:
